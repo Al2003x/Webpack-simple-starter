@@ -1,0 +1,25 @@
+{
+  "name": "webpack-simple-starter",
+  "version": "1.0.0",
+  "description": "Simple starter webpack",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "dev": "cross-env NODE_ENV=development webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Al2003x/Webpack-simple-starter.git"
+  },
+  "author": "Al2003x",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Al2003x/Webpack-simple-starter/issues"
+  },
+  "homepage": "https://github.com/Al2003x/Webpack-simple-starter#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
