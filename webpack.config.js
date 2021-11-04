@@ -93,7 +93,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    //static: path.resolve(__dirname, "dist"),
+    static: path.resolve(__dirname, "dist"),
     open: true,
     compress: true,
     hot: true,
@@ -121,21 +121,21 @@ module.exports = {
         ],
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(?:|gif|png|jpg|jpeg|svg)$/i,
         type: "asset/resource",
         generator : {
-          filename : 'img/[name][ext][query]',
+          filename : `./img/${filename('[ext]')}`
         }
       },
       {
         test: /\.(?:|woff2|woff)$/,
         type: "asset/resource",
         generator : {
-          filename : 'fonts/[hash][ext][query]',
+          filename : `./fonts/${filename('[ext]')}`
         }
       },
     ],

@@ -11,12 +11,12 @@ html {
 body {
   overflow-anchor: none;
   font-family: "asd", sans-serif;
-  background-color: var(--color-white);
   scroll-behavior: smooth;
 }
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -26,10 +26,6 @@ a {
 
 .site-container {
   overflow: hidden;
-}
-
-.is-hidden {
-  display: none !important; // stylelint-disable-line declaration-no-important
 }
 
 .visually-hidden {
@@ -43,7 +39,7 @@ a {
   cursor: pointer;
 }
 
-.list-reset {
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
