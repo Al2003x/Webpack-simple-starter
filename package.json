@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/Al2003x/Webpack-simple-starter#readme",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
@@ -26,14 +29,28 @@
     "file-loader": "^6.2.0",
     "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.0",
+    "imagemin-webpack": "^5.1.1",
     "mini-css-extract-plugin": "^2.4.3",
     "node-sass": "^6.0.1",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
     "sass-loader": "^12.3.0",
-    "webpack": "^5.60.0",
+    "stylelint": "^14.0.1",
+    "stylelint-declaration-block-no-ignored-properties": "^2.4.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.0.0",
+    "terser-webpack-plugin": "^5.2.4",
+    "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
+    "focus-visible": "^5.2.0",
     "normalize.css": "^8.0.1"
   }
 }
