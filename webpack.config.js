@@ -17,7 +17,7 @@ module.exports = {
   output: {
     filename: `./js/${filename("js")}`,
     path: path.resolve(__dirname, "dist"),
-    publicPath: "",
+    assetModuleFilename: "assets/[hash][ext][query]",
   },
   devServer: {
     historyApiFallback: true,
@@ -43,7 +43,7 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, "src/assets"),
-          to: path.resolve(__dirname, "dist"),
+          to: path.resolve(__dirname, "dist/assets"),
         },
       ],
     }),
@@ -51,7 +51,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
+        test: /\.html$/i,
         loader: "html-loader",
       },
       {
@@ -68,40 +68,21 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: (resourcePath, context) => {
-                return path.relative(path.dirname(resourcePath), context) + "/";
-              },
-            },
-          },
-          "css-loader",
-          "sass-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /\.(?:|gif|png|jpg|jpeg|svg)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: `./img/${filename("[ext]")}`,
-            },
-          },
-        ],
+        test: /\.(?:|gif|png|jpg|jpeg|svg)$/i,
+        type: "asset/resource",
+        generator : {
+          filename : 'img/[name][ext][query]',
+        }
       },
       {
         test: /\.(?:|woff2|woff)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: `./fonts/${filename("[ext]")}`,
-            },
-          },
-        ],
+        type: "asset/resource",
+        generator : {
+          filename : 'fonts/[hash][ext][query]',
+        }
       },
     ],
   },
