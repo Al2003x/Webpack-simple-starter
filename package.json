@@ -12,10 +12,12 @@
     "stylelint": "stylelint --fix \"src/scss/**/*.scss\" --custom-syntax postcss-scss",
     "test": "npm run editorconfig && npm run stylelint && npm run lint"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Al2003x/Webpack-simple-starter.git"
   },
+
   "author": "Al2003x",
   "license": "ISC",
   "bugs": {
@@ -49,6 +51,7 @@
     "postcss-scss": "^4.0.2",
     "sass-loader": "^12.3.0",
     "stylelint": "^14.0.1",
+    "stylelint-config-standard-scss": "^2.0.1",
     "stylelint-declaration-block-no-ignored-properties": "^2.4.0",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.0",
@@ -57,8 +60,20 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
   },
+
   "dependencies": {
     "focus-visible": "^5.2.0",
     "normalize.css": "^8.0.1"
+  },
+
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(css|scss)": [
+      "stylelint --fix"
+    ]
   }
 }
