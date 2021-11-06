@@ -70,7 +70,7 @@
   },
   "lint-staged": {
     "*.(css|scss)": [
-      "stylelint --fix"
+      "prettier --write", "stylelint --fix --config ./.stylelintrc", "git add"
     ]
   }
 }
