@@ -7,6 +7,7 @@ const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugi
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack");
 
+
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
