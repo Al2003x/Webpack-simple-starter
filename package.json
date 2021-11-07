@@ -66,14 +66,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+      "pre-push": "npm run test"
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css, scss}": [
-      "stylelint --write",
-      "lint --fix src/",
-      "git add"
-    ]
+    "*.js": ["eslint", "git add"],
+    "*.scss": ["stylelint --custom-syntax postcss-scss", "git add"]
   }
 }
