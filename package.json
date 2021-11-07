@@ -8,9 +8,9 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "start": "cross-env NODE_ENV=development webpack serve --mode development",
     "editorconfig": "editorconfig-checker",
-    "lint": "eslint js/",
-    "stylelint": "stylelint \"src/scss/**/*.scss\" --custom-syntax postcss-scss",
-    "test": "npm run editorconfig && npm run stylelint && npm run lint"
+    "lint": "eslint src/*js/",
+    "stylelint": "stylelint \"src/scss/**/*.scss\" --fix --custom-syntax postcss-scss",
+    "test": "npm run editorconfig && npm run stylelint && npm run lint && w3c-html-validator src"
   },
   "repository": {
     "type": "git",
@@ -50,11 +50,10 @@
     "sass-loader": "^12.3.0",
     "stylelint": "^14.0.1",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard-scss": "^2.0.1",
-    "stylelint-declaration-block-no-ignored-properties": "^2.4.0",
-    "stylelint-order": "^5.0.0",
+    "stylelint-config-recommended": "^6.0.0",
     "stylelint-scss": "^4.0.0",
     "terser-webpack-plugin": "^5.2.4",
+    "w3c-html-validator": "^0.8.1",
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
@@ -70,7 +69,8 @@
   },
   "lint-staged": {
     "*.(css|scss)": [
-      "prettier --write", "stylelint --fix --config ./.stylelintrc", "git add"
+      "stylelint --fix",
+      "git add"
     ]
   }
 }
