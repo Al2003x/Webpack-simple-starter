@@ -91,6 +91,7 @@ module.exports = {
     filename: `./js/${filename("js")}`,
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "assets/[hash][ext][query]",
+    publicPath: ''
   },
   devServer: {
     historyApiFallback: true,
@@ -106,7 +107,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/i,
+        test: /\.html$/,
         loader: "html-loader",
       },
       {
