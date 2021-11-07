@@ -69,11 +69,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*.(css|scss)": [
-      "npm run stylelintlint:write",
+    "*.(css|scss)": [
+      "npm run stylelint:write",
       "git add"
     ],
-    "src/**/*.js": [
+    "*.{js, jsx}": [
       "npm run lint:write",
       "git add"
     ]
