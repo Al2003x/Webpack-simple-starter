@@ -8,8 +8,8 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "start": "cross-env NODE_ENV=development webpack serve --mode development",
     "editorconfig": "editorconfig-checker",
-    "lint": "eslint src/*js/",
-    "stylelint": "stylelint \"src/scss/**/*.scss\" --custom-syntax postcss-scss",
+    "lint": "eslint src/*js/ --fix",
+    "stylelint": "stylelint \"src/scss/**/*.scss\" --fix --custom-syntax postcss-scss",
     "test": "npm run editorconfig && npm run stylelint && npm run lint"
   },
   "repository": {
@@ -65,16 +65,17 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
     }
   },
   "lint-staged": {
     "*.(css|scss)": [
-      "stylelint:write",
+      "npm run stylelint",
       "git add"
     ],
-    "*.{js, jsx}": [
-      "lint:write",
+    "*.js": [
+      "npm run lint",
       "git add"
     ]
   }
