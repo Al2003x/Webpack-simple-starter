@@ -1,9 +1,7 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const  CssMinimizerPlugin  =  require ( "css-minimizer-webpack-plugin" ) ;
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack");
 
@@ -23,7 +21,7 @@ const filename = (ext) =>
 
     if (isProd) {
       configObj.minimizer = [
-        new OptimizeCssAssetWebpackPlugin(),
+        new CssMinimizerPlugin(),
         new TerserWebpackPlugin()
       ];
     }
@@ -40,17 +38,9 @@ const filename = (ext) =>
           collapseWhitespace: isProd
         }
       }),
-      new CleanWebpackPlugin(),
+      //new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: `./css/${filename("css")}`
-      }),
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, "src/assets"),
-            to: path.resolve(__dirname, "dist/assets")
-          }
-        ]
       }),
     ];
 
@@ -91,7 +81,8 @@ module.exports = {
     filename: `./js/${filename("js")}`,
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "assets/[hash][ext][query]",
-    publicPath: ''
+    publicPath: '',
+    clean: true,
   },
   devServer: {
     historyApiFallback: true,
@@ -132,7 +123,7 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(?:|gif|png|jpg|jpeg|svg)$/i,
+        test: /\.(?:|gif|png|jpg|jpeg|svg|ico)$/i,
         type: "asset/resource",
         generator : {
           filename : `./img/${filename('[ext]')}`
